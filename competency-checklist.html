@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checklist Kompetensi & Flow Belajar Ekosistem FM & Catering</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --primary: #1b4f72;
+      --accent: #ffb300;
+      --border: #dde3f0;
+      --text-main: #1f2933;
+      --text-soft: #5a6a80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 24px;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+      padding: 18px 20px 20px 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-soft);
+    }
+
+    .section-main-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .section-note {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    /* CHECKLIST GRID */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .checklist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checklist-group {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 10px 12px 12px 12px;
+      background: #f9fbff;
+    }
+
+    .checklist-group-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .checklist-group-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #e3f2fd;
+      color: var(--primary);
+      border: 1px solid #bbdefb;
+      font-weight: 600;
+    }
+
+    .checklist-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .checklist-level {
+      margin-left: auto;
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .checklist-items {
+      margin-top: 4px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .checkbox {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid #cbd2e2;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .check-label {
+      flex: 1;
+      color: var(--text-soft);
+    }
+
+    .check-label strong {
+      color: var(--text-main);
+    }
+
+    /* FLOW / TIMELINE */
+    .flow-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .flow-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #dde3f0;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 16px;
+      padding-left: 14px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 2px solid var(--primary);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .timeline-phase {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .timeline-duration {
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .timeline-body {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .timeline-body ul {
+      margin-top: 4px;
+      padding-left: 16px;
+      list-style: disc;
+    }
+
+    .flow-summary-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 10px 12px 12px 12px;
+      background: #fdfcfb;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .flow-summary-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .flow-pill {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fff3e0;
+      border: 1px solid #ffe0b2;
+      color: #8a5a00;
+      margin: 2px 2px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Kompetensi & Flow Belajar</h1>
+    <div class="subtitle">
+      Peta kemampuan dan alur belajar untuk membangun ekosistem FM & catering end-to-end.
+    </div>
+
+    <!-- SECTION 1: CHECKLIST KOMPETENSI -->
+    <section class="section-card">
+      <div class="section-title-row">
+        <div class="section-label">Bagian 1</div>
+        <div class="section-main-title">Checklist Kompetensi</div>
+      </div>
+      <div class="section-note">
+        Centang tiap poin setelah kamu merasa: <strong>paham konsep → bisa contoh sendiri → bisa pakai di proyek nyata.</strong>
+      </div>
+
+      <div class="checklist-grid">
+
+        <!-- GROUP 1: Apps Script & HTML/CSS -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Fondasi Web & Otomasi</div>
+            <div class="checklist-group-title">Apps Script + HTML/CSS</div>
+            <div class="checklist-level">Level 1</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label"><strong>Memahami struktur HTML dasar</strong> (tag umum, form, table, layout sederhana).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mampu membuat <strong>layout dengan Flexbox/Grid</strong> untuk dashboard sederhana (sidebar + konten).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Menggunakan <strong>Google Apps Script</strong> untuk baca/tulis data ke Google Sheets (CRUD).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Bisa membuat <strong>Web App Apps Script</strong> dengan <code>doGet()</code> & <code>doPost()</code>.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Membuat <strong>form input WMS/PR/PO</strong> yang menyimpan data ke sheet dengan validasi dasar.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengatur <strong>trigger terjadwal</strong> (daily/weekly) untuk kirim email summary atau auto-update.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 2: SQL & Data Modeling -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Data Backbone</div>
+            <div class="checklist-group-title">SQL & Data Modeling</div>
+            <div class="checklist-level">Level 1–2</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti perintah <strong>SELECT, INSERT, UPDATE, DELETE</strong> di SQL.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Bisa melakukan <strong>JOIN</strong> antar tabel (item–recipe, PR–PO–Vendor).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mampu mendesain <strong>ERD sederhana</strong> untuk WMS & Procurement (tabel, relasi, primary key).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti konsep <strong>normalisasi</strong> (menghindari data duplikat berlebihan).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti <strong>index & unique key</strong> dan kapan dipakai.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 3: JavaScript & Frontend Logic -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Interaktivitas UI</div>
+            <div class="checklist-group-title">JavaScript Frontend</div>
+            <div class="checklist-level">Level 2</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Memahami <strong>DOM</strong> (document object model) & memanipulasi elemen (tambah row, ubah teks, dsb).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Bisa menggunakan <strong>Fetch API</strong> untuk memanggil Apps Script / API backend.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti <strong>async/await</strong> untuk operasi asinkron seperti load data tabel.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Membuat <strong>table interaktif</strong> (search, sort, pagination sederhana) dengan JS.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 4: Backend Framework -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Aplikasi Backend</div>
+            <div class="checklist-group-title">Laravel / Backend Framework</div>
+            <div class="checklist-level">Level 2–3</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Memahami konsep <strong>Routing → Controller → Model</strong> di framework (misal: Laravel).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Dapat membuat <strong>API endpoint</strong> untuk modul (stock, PR, PO, vendor, dll).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Membuat <strong>CRUD data</strong> menggunakan ORM (misal: Eloquent di Laravel).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Implementasi <strong>authentication & role-based access</strong> (site, HO, BOD).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 5: Integrasi & Data Warehouse -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Integrasi & Analitik</div>
+            <div class="checklist-group-title">API & Data Warehouse</div>
+            <div class="checklist-level">Level 3</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti konsep <strong>REST API</strong> & format JSON.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Bisa mengkonsumsi atau menyediakan API untuk sistem lain (HRIS, accounting, client portal).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti konsep <strong>ETL</strong> (Extract–Transform–Load) ke data warehouse mini.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mampu mendesain <strong>data mart</strong> untuk analitik (WMS, procurement, finance).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 6: PWA & System Quality -->
+        <div class="checklist-group">
+          <div class="checklist-group-header">
+            <div class="checklist-group-badge">Advanced</div>
+            <div class="checklist-group-title">PWA & Quality Engineering</div>
+            <div class="checklist-level">Level 3–4</div>
+          </div>
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Memahami konsep <strong>PWA</strong> (installable, offline-capable, web manifest).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti dasar <strong>Git</strong> dan version control untuk kolaborasi.</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti konsep <strong>testing</strong> (setidaknya manual structured test dan basic automation).</div>
+            </div>
+            <div class="check-item">
+              <div class="checkbox"></div>
+              <div class="check-label">Mengerti konsep <strong>deployment & environment</strong> (dev, staging, production).</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: FLOW BELAJAR -->
+    <section class="section-card">
+      <div class="section-title-row">
+        <div class="section-label">Bagian 2</div>
+        <div class="section-main-title">Flow Belajar dari Awal sampai Akhir</div>
+      </div>
+      <div class="section-note">
+        Flow ini dibagi per fase, kira-kira 18 bulan, tapi bisa kamu percepat kalau intensitas belajarnya lebih tinggi.
+      </div>
+
+      <div class="flow-layout">
+        <!-- Timeline kiri -->
+        <div>
+          <div class="timeline">
+
+            <!-- Phase 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-header">
+                <div class="timeline-phase">Fase 1 – Fondasi Operasional Digital</div>
+                <div class="timeline-duration">(Bulan 1–2)</div>
+              </div>
+              <div class="timeline-body">
+                Fokus: Apps Script, HTML/CSS, SQL dasar.  
+                <ul>
+                  <li>Menguasai HTML & CSS dasar untuk layout dashboard & form.</li>
+                  <li>Belajar Apps Script: CRUD ke Google Sheets, Web App, trigger.</li>
+                  <li>SQL dasar: SELECT, INSERT, UPDATE, DELETE, JOIN.</li>
+                  <li>Membuat WMS & PR/PO sederhana full di Google Sheets + Apps Script.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-header">
+                <div class="timeline-phase">Fase 2 – Interaktivitas & Data Backbone</div>
+                <div class="timeline-duration">(Bulan 3–5)</div>
+              </div>
+              <div class="timeline-body">
+                Fokus: JavaScript frontend & desain data lebih matang.  
+                <ul>
+                  <li>Belajar JS DOM, event handling, Fetch API untuk tarik data dari Apps Script.</li>
+                  <li>Bangun table interaktif: search, filter, pagination manual.</li>
+                  <li>Rancang ERD untuk WMS + Procurement (item–recipe–stock–PR–PO–vendor).</li>
+                  <li>Benahi master data & standardisasi kode (PR, PO, item, site).</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-header">
+                <div class="timeline-phase">Fase 3 – Backend Framework & API</div>
+                <div class="timeline-duration">(Bulan 6–9)</div>
+              </div>
+              <div class="timeline-body">
+                Fokus: migrasi ke backend modern (misal Laravel) + database SQL penuh.  
+                <ul>
+                  <li>Belajar dasar Laravel (routing, controller, model, migration).</li>
+                  <li>Migrasi modul kritikal (WMS & PR/PO) dari Sheet ke database MySQL/PostgreSQL.</li>
+                  <li>Membuat API endpoint untuk stock, PR, PO, vendor, GRN.</li>
+                  <li>Implement login & role-based access: site, HO, BOD.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-header">
+                <div class="timeline-phase">Fase 4 – Integrasi & Analitik Lanjut</div>
+                <div class="timeline-duration">(Bulan 9–12)</div>
+              </div>
+              <div class="timeline-body">
+                Fokus: integrasi sistem & mini data warehouse.  
+                <ul>
+                  <li>Desain pipeline ETL sederhana: dari DB operasional ke DB analitik.</li>
+                  <li>Bangun data mart untuk cost control, vendor performance, dan SLA site.</li>
+                  <li>Perkuat dashboard (Looker Studio / BI lain) dengan data dari SQL, bukan hanya Sheet.</li>
+                  <li>Mulai rancang API integrasi ke HRIS / accounting / client portal.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-header">
+                <div class="timeline-phase">Fase 5 – PWA & Quality Engineering</div>
+                <div class="timeline-duration">(Bulan 12–18)</div>
+              </div>
+              <div class="timeline-body">
+                Fokus: menjadikan sistem sebagai “produk” yang scalable & nyaman dipakai.  
+                <ul>
+                  <li>Belajar konsep PWA: installable app, offline cache, web manifest.</li>
+                  <li>Implement Git & basic branching untuk versi dan backup.</li>
+                  <li>Menyusun pengujian terstruktur (test case) untuk modul kritikal (WMS, PR/PO, cost).</li>
+                  <li>Optimasi performa & stabilitas sistem untuk multi-site dan multi-user.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Ringkasan kanan -->
+        <div>
+          <div class="flow-summary-card">
+            <div class="flow-summary-title">Ringkasan Jalan Ninja Kamu</div>
+            <p>
+              Kamu tidak mulai dari nol. Kamu sudah kuat di <strong>logika, data, dan operasional</strong>.
+              Flow ini menyusun urutan teknologi supaya:
+            </p>
+            <ul style="margin-top:6px; padding-left:16px; list-style:disc;">
+              <li>Di awal: cepat dapat hasil (Apps Script + Sheets + HTML).</li>
+              <li>Di tengah: pindah ke sistem yang lebih kokoh (Laravel + SQL).</li>
+              <li>Di akhir: ekosistem siap jadi <em>platform</em> kelas korporasi.</li>
+            </ul>
+            <p style="margin-top:8px;">
+              Setiap fase, lihat kembali <strong>Checklist Kompetensi</strong> di atas.  
+              Targetnya: sebelum pindah fase, minimal 70% checklist terkait fase tersebut sudah bisa kamu centang.
+            </p>
+            <div style="margin-top:8px;">
+              <span class="flow-pill">Fase 1–2 → Apps Script & HTML/CSS</span>
+              <span class="flow-pill">Fase 3 → Backend & SQL</span>
+              <span class="flow-pill">Fase 4 → Integrasi & BI</span>
+              <span class="flow-pill">Fase 5 → PWA & Quality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
