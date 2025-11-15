@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blueprint Ekosistem FM & Catering</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --primary: #1b4f72;
+      --primary-soft: #e3f2fd;
+      --accent: #ffb300;
+      --border: #dde3f0;
+      --text-main: #1f2933;
+      --text-soft: #5a6a80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 24px;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* NODE PUSAT */
+    .central-node {
+      margin: 0 auto 24px auto;
+      max-width: 520px;
+      background: linear-gradient(135deg, #1b4f72, #2471a3);
+      color: #ffffff;
+      padding: 16px 20px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.25);
+    }
+
+    .central-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .central-tagline {
+      font-size: 11px;
+      opacity: 0.9;
+      margin-bottom: 6px;
+    }
+
+    .central-meta {
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    /* GRID 8 PILAR */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--primary-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pillar-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pillar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .pillar-tag {
+      margin-left: auto;
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fff8e1;
+      border: 1px solid #ffecb3;
+      color: #8a5a00;
+      white-space: nowrap;
+    }
+
+    .pillar-body {
+      padding: 10px 14px 12px 14px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .pillar-section {
+      margin-bottom: 8px;
+    }
+
+    .pillar-section-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 3px;
+      font-size: 11px;
+    }
+
+    .pillar-section ul {
+      padding-left: 16px;
+      list-style: disc;
+    }
+
+    .pillar-section li {
+      margin: 2px 0;
+    }
+
+    .small-note {
+      margin-top: 4px;
+      font-size: 10px;
+      color: #8a9ab0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Blueprint Ekosistem FM & Catering</h1>
+    <div class="subtitle">
+      Mind map level tinggi: 8 pilar dari data, proses, sampai value ke BOD.
+    </div>
+
+    <!-- NODE PUSAT -->
+    <div class="central-node">
+      <div class="central-title">EKOSISTEM FACILITY MANAGEMENT & CATERING</div>
+      <div class="central-tagline">
+        Perencanaan → Operasional → Kontrol Keuangan → Decision Support → Continuous Improvement
+      </div>
+      <div class="central-meta">
+        Dibangun sebagai mini-ERP khusus FM & catering, scalable untuk multi-site dan standar korporasi.
+      </div>
+    </div>
+
+    <!-- 8 PILAR -->
+    <div class="pillars-grid">
+
+      <!-- 1. DATA BACKBONE -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">1</div>
+          <div class="pillar-title">Data Backbone</div>
+          <div class="pillar-tag">master data & SSOT</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Master Data Governance</div>
+            <ul>
+              <li>Master item & kategori, satuan, supplier utama & alternatif.</li>
+              <li>Master site: kode site, alamat, pax, SLA.</li>
+              <li>Master recipe/BOM: bahan per porsi, yield, cost per portion.</li>
+              <li>Master manpower & asset register (alat & fasilitas).</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Single Source of Truth (SSOT)</div>
+            <ul>
+              <li>Satu sumber data untuk semua modul.</li>
+              <li>Awal: Google Sheets terstruktur & terkunci hak akses.</li>
+              <li>Tahap lanjut: database SQL (MySQL/PostgreSQL).</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Standardisasi Kode</div>
+            <ul>
+              <li>Format seragam: PR, PO, item, site, recipe code.</li>
+              <li>Mudah di-trace untuk kebutuhan audit & investigasi.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. PROCESS LAYER -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">2</div>
+          <div class="pillar-title">Process Layer</div>
+          <div class="pillar-tag">hulu → hilir</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">WMS (Warehouse)</div>
+            <ul>
+              <li>Stock level, stock movement, stock opname.</li>
+              <li>FIFO/FEFO, batch & expiry control.</li>
+              <li>Repeat order otomatis berdasarkan kebutuhan & safety stock.</li>
+              <li>Multi-site stock visibility & transfer antar site.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Procurement</div>
+            <ul>
+              <li>Flow PR → Review → Approval → PO → GRN → Invoice.</li>
+              <li>Approval matrix (limit per jabatan).</li>
+              <li>Vendor performance (OTIF, kualitas, harga).</li>
+              <li>Link ke WMS (stok) & ke finance (komitmen & pembayaran).</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Finance & Budget</div>
+            <ul>
+              <li>Budget per site & kategori cost.</li>
+              <li>Commitment vs actual vs variance.</li>
+              <li>Food cost & cost per pax per site/kontrak.</li>
+              <li>Early warning bila mendekati atau melewati budget.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Service Delivery</div>
+            <ul>
+              <li>Catering: menu planning, meal order, portioning, waste.</li>
+              <li>Facility: cleaning checklist, quality inspection, work order.</li>
+              <li>Manpower scheduling sesuai SLA & pax.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. INTELLIGENCE LAYER -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">3</div>
+          <div class="pillar-title">Intelligence Layer</div>
+          <div class="pillar-tag">dashboard</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Cost & Procurement Dashboard</div>
+            <ul>
+              <li>Food cost & cost per pax per site.</li>
+              <li>Trend harga bahan & konsumsi.</li>
+              <li>Lead time PR → PO → GRN.</li>
+              <li>Vendor OTIF & ranking vendor.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Operational & Facility Dashboard</div>
+            <ul>
+              <li>Jumlah meal served & waste/return meal.</li>
+              <li>Issue & complaint tracking per site.</li>
+              <li>Status preventive maintenance & downtime.</li>
+              <li>SLA kebersihan & service level facility.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Executive & Budget View</div>
+            <ul>
+              <li>Budget vs actual vs commitment.</li>
+              <li>Deviation & root cause per kategori cost.</li>
+              <li>Benchmark antar site (cost, SLA, waste).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. OUTPUT LAYER -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">4</div>
+          <div class="pillar-title">Output Layer</div>
+          <div class="pillar-tag">laporan</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Daily Reports</div>
+            <ul>
+              <li>Daily production & meal/pax report.</li>
+              <li>Ringkasan stock movement harian.</li>
+              <li>Status checklist cleaning & maintenance.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Weekly Reports</div>
+            <ul>
+              <li>Rekap isu & komplain.</li>
+              <li>Vendor performance mingguan.</li>
+              <li>Trend sederhana cost & waste.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Monthly Management Reports</div>
+            <ul>
+              <li>Executive summary per site & konsolidasi.</li>
+              <li>Cost summary & cost per pax.</li>
+              <li>SLA & KPI achievement.</li>
+              <li>CAPA & rekomendasi perbaikan.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. EKOSISTEM TAMBAHAN -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">5</div>
+          <div class="pillar-title">Ekosistem Tambahan</div>
+          <div class="pillar-tag">premium layer</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Menu Engineering & Nutrition</div>
+            <ul>
+              <li>Recipe & costing engine (per porsi).</li>
+              <li>Menu cycle 7/14/30 hari per site.</li>
+              <li>Informasi nutrisi per menu/porsi.</li>
+              <li>Analisis menu: rating & waste.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Manpower & Workforce Planning</div>
+            <ul>
+              <li>Headcount planning per site & shift.</li>
+              <li>Skill matrix & sertifikasi (expiry date).</li>
+              <li>Penjadwalan & rotasi shift.</li>
+              <li>Produktivitas & utilization per posisi.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Asset & Preventive Maintenance</div>
+            <ul>
+              <li>Asset register lengkap (kitchen & facility).</li>
+              <li>Jadwal preventive maintenance.</li>
+              <li>Work order & downtime tracking.</li>
+              <li>Analisis penggantian asset (lifecycle).</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Quality & Compliance</div>
+            <ul>
+              <li>Audit digital (HACCP, HSE, 5R, dll).</li>
+              <li>Temuan & CAPA tracking.</li>
+              <li>Library SOP dengan versioning.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Customer / Client Portal</div>
+            <ul>
+              <li>Form komplain & service request.</li>
+              <li>Rating menu & kebersihan.</li>
+              <li>Akses terbatas ke laporan & dashboard.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. INTEGRASI & ARSITEKTUR -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">6</div>
+          <div class="pillar-title">Integrasi & Arsitektur</div>
+          <div class="pillar-tag">nyawa sistem</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Integrasi Data Internal</div>
+            <ul>
+              <li>Semua modul baca/tulis ke SSOT.</li>
+              <li>Relasi antar tabel jelas (item–recipe–PO–stock).</li>
+              <li>Minim duplikasi & versi data ganda.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Stack Teknologi</div>
+            <ul>
+              <li>Tahap awal: Google Workspace + Apps Script.</li>
+              <li>Tahap lanjut: Backend (Laravel/Node/Django) + DB SQL.</li>
+              <li>Frontend: web/PWA untuk site & HO.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Otomasi</div>
+            <ul>
+              <li>Reminder sertifikasi & jadwal PM.</li>
+              <li>Summary harian via email/dashboard.</li>
+              <li>Snapshot data periodik untuk reporting.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Mini Data Warehouse</div>
+            <ul>
+              <li>Database khusus analitik jangka panjang.</li>
+              <li>Analisis tren harga, cost, kinerja vendor & site.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. ROADMAP TEKNOLOGI -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">7</div>
+          <div class="pillar-title">Roadmap Teknologi</div>
+          <div class="pillar-tag">tahap 1–3</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Tahap 1 (0–6 Bulan)</div>
+            <ul>
+              <li>Standardisasi master data.</li>
+              <li>WMS dasar + PR/PO di Google Sheets.</li>
+              <li>Dashboard basic di Looker Studio.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Tahap 2 (6–18 Bulan)</div>
+            <ul>
+              <li>Pembangunan web app internal / PWA.</li>
+              <li>Migrasi transaksi ke DB SQL.</li>
+              <li>Role-based access & UX lebih bagus.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Tahap 3 (18+ Bulan)</div>
+            <ul>
+              <li>Arsitektur modular/microservice per domain.</li>
+              <li>Integrasi dengan HRIS, accounting, sistem klien.</li>
+              <li>Data warehouse & BI lebih advanced.</li>
+            </ul>
+          </div>
+          <div class="small-note">
+            *Roadmap bisa dipakai sebagai bahan presentasi ke BOD & guideline tim IT.
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. VALUE UNTUK BOD -->
+      <section class="pillar-card">
+        <div class="pillar-header">
+          <div class="pillar-number">8</div>
+          <div class="pillar-title">Value untuk BOD</div>
+          <div class="pillar-tag">bahasa korporasi</div>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-section">
+            <div class="pillar-section-title">Transparansi & Auditability</div>
+            <ul>
+              <li>Trace: cost → menu → bahan → vendor → PO/PR.</li>
+              <li>Log aktivitas: siapa input/approve apa, kapan.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Control & Risk Management</div>
+            <ul>
+              <li>Procurement & WMS saling mengunci.</li>
+              <li>Fraud & kebocoran cost lebih terjaga.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Scalability & Replicability</div>
+            <ul>
+              <li>Desain sekali, bisa di-rollout ke banyak site.</li>
+              <li>Site baru = setup master data + template.</li>
+            </ul>
+          </div>
+          <div class="pillar-section">
+            <div class="pillar-section-title">Decision Support & Branding</div>
+            <ul>
+              <li>Keputusan berbasis data & simulasi, bukan feeling.</li>
+              <li>Menaikkan nilai perusahaan di mata klien/investor.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>
